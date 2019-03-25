@@ -1,6 +1,6 @@
 # RyanLabShortReadAssembly
 
-### To install utilities in this distribution (currently only remove_short_and_sort)
+### To install scripts in this distribution 
 
 run the following:
 
