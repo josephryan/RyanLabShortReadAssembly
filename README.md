@@ -1,7 +1,5 @@
 # RyanLabShortReadAssembly
 Our pipeline for assembling short reads
-# RyanLabShortReadAssembly
-Our pipeline for assembling short reads
 
 ### 1. trim adapters
 
