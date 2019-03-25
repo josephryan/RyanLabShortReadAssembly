@@ -122,7 +122,7 @@ requires: https://github.com/nsoranzo/sspace_basic
 
 ### 9. Remove scaffolds shorter than 200 basepairs (this is smallest accepted by GenBank) and sort by scaffold length
 
-requires: remove_lt200.pl from this repo and https://github.com/josephryan/JFR-PerlModules
+requires: remove_short_and_sort from this repo and https://github.com/josephryan/JFR-PerlModules
 
     remove_short_and_sort blah.final.scaffolds.fasta 200 > blah.gte200.fa
 
