@@ -1,5 +1,20 @@
 # RyanLabShortReadAssembly
-Our pipeline for assembling short reads
+
+### To install any utilities in this distribution
+
+run the following:
+
+    perl Makefile.PL
+    make
+    sudo make install
+
+if you do not have permission to install to the system see the following:
+
+    http://www.perlmonks.org/index.pl?node_id=128077#permission
+
+----
+
+## Our pipeline for assembling short reads
 
 ### 1. trim adapters
 
@@ -109,12 +124,11 @@ requires: https://github.com/nsoranzo/sspace_basic
 
 requires: remove_lt200.pl from this repo and https://github.com/josephryan/JFR-PerlModules
 
-    remove_lt200.pl  > blah.final.scaffolds.fasta blah.gte200.fa
+    remove_short_and_sort blah.final.scaffolds.fasta 200 > blah.gte200.fa
 
 ### 10. Replace definition lines. 
 
 utility script in: https://github.com/josephryan/JFR-PerlModules
-
 
 First determine the pad value by running:
 
