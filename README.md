@@ -20,13 +20,15 @@ if you do not have permission to install to the system see the following:
 
 requires:http://www.usadellab.org/cms/?page=trimmomatic
 
-    java -jar /usr/local/Trimmomatic-0.36/trimmomatic-0.36.jar PE -threads 12 -phred33 IN.R1.fq IN.R2.fq OUT.trim.R1.fq OUT.trim.unp1.fq OUT.trim.R2.fq OUT.trim.unp2.fq ILLUMINACLIP:/usr/local/Trimmomatic-0.36/adapters/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36 > trimmo.PE.log 2>&1
+    java -jar /usr/local/Trimmomatic-0.38/trimmomatic-0.38.jar PE -threads 12 -phred33 IN.R1.fq IN.R2.fq OUT.trim.R1.fq OUT.trim.unp1.fq OUT.trim.R2.fq OUT.trim.unp2.fq ILLUMINACLIP:/usr/local/Trimmomatic-0.38/adapters/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36 > trimmo.log 2> trimmo.err &
 
 ### 2. error correction
 
 requires:http://software.broadinstitute.org/allpaths-lg/blog/
 
-    perl /usr/local/allpathslg-44837/src/ErrorCorrectReads.pl PAIRED_READS_A_IN=IN_R1.fq.gz PAIRED_READS_B_IN=../02b-TRIMMOMATIC/Lcru.R2.trimmo.fq.gz PAIRED_SEP=100 THREADS=30 PHRED_ENCODING=33 READS_OUT=Lcru > ecr.log 2>&1 &
+    cat OUT.trim.unp1.fq OUT.trim.unp2.fq > OUT.trim.unp.concat.fq
+    gzip -9 *.fq
+    perl /usr/local/allpathslg-44837/src/ErrorCorrectReads.pl PAIRED_READS_A_IN=OUT.trim.R1.fq.gz PAIRED_READS_B_IN=OUT.trim.R2.fq.gz UNPAIRED_READS_IN=OUT.trim.unp.concat.fq.gz PAIRED_SEP=100 THREADS=160 PHRED_ENCODING=33 READS_OUT=Boltenia > ecr.out 2> ecr.err &
 
 ### 3. remove mt reads (usually run a preliminary platanus assembly—see plat.45 below—to identify/assemble the MT genome)
 
