@@ -140,7 +140,7 @@ requires: https://github.com/nsoranzo/sspace_basic
     perl /usr/local/SSPACE-STANDARD-3.0_linux-x86_64/SSPACE_Standard_v3.0.pl -l libraries.txt -s ../blah.87/out_gapClosed.fa -T 20 -k 5 -a 0.7 -x 0 -b blah
 
 ### 9. Remove scaffolds shorter than 200 basepairs (this is smallest accepted by GenBank) and sort by scaffold length
-NOTE: We know remove short contigs earlier in the process, but this might be necessary for sorting SSPACE scaffolds
+NOTE: We know remove short contigs earlier in the process, but this is still usually necessary for sorting SSPACE scaffolds
 
 requires: remove_short_and_sort from this repo and https://github.com/josephryan/JFR-PerlModules
 
