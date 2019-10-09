@@ -74,42 +74,42 @@ requires: remove_short_and_sort from this repo and https://github.com/josephryan
 
 (if blah.45 was optimal assembly)
 
-    matemaker --assembly=../blah.31/out_gapClosed.fa --insertsize=2000 --out=blah31.2k
+    matemaker --assembly=../blah.31/out_gapClosed.fa.gte200 --insertsize=2000 --out=blah31.2k
 
 
-    matemaker --assembly=../blah.31/out_gapClosed.fa --insertsize=5000 --out=blah31.5k
+    matemaker --assembly=../blah.31/out_gapClosed.fa.gte200 --insertsize=5000 --out=blah31.5k
 
 
-    matemaker --assembly=../blah.31/out_gapClosed.fa --insertsize=10000 --out=blah31.10k
-
-
-
-    matemaker --assembly=../blah.59/out_gapClosed.fa --insertsize=2000 --out=blah59.2k
-
-
-    matemaker --assembly=../blah.59/out_gapClosed.fa --insertsize=5000 --out=blah59.5k
-
-
-    matemaker --assembly=../blah.59/out_gapClosed.fa --insertsize=10000 --out=blah59.10k
+    matemaker --assembly=../blah.31/out_gapClosed.fa.gte200 --insertsize=10000 --out=blah31.10k
 
 
 
-    matemaker --assembly=../blah.73/out_gapClosed.fa --insertsize=2000 --out=blah73.2k
+    matemaker --assembly=../blah.59/out_gapClosed.fa.gte200 --insertsize=2000 --out=blah59.2k
 
 
-    matemaker --assembly=../blah.73/out_gapClosed.fa --insertsize=5000 --out=blah73.5k
+    matemaker --assembly=../blah.59/out_gapClosed.fa.gte200 --insertsize=5000 --out=blah59.5k
 
 
-    matemaker --assembly=../blah.73/out_gapClosed.fa --insertsize=10000 --out=blah73.10k
+    matemaker --assembly=../blah.59/out_gapClosed.fa.gte200 --insertsize=10000 --out=blah59.10k
 
 
-    matemaker --assembly=../blah.87/out_gapClosed.fa --insertsize=2000 --out=blah87.2k
+
+    matemaker --assembly=../blah.73/out_gapClosed.fa.gte200 --insertsize=2000 --out=blah73.2k
 
 
-    matemaker --assembly=../blah.87/out_gapClosed.fa --insertsize=5000 --out=blah87.5k
+    matemaker --assembly=../blah.73/out_gapClosed.fa.gte200 --insertsize=5000 --out=blah73.5k
 
 
-    matemaker --assembly=../blah.87/out_gapClosed.fa --insertsize=10000 --out=blah87.10k
+    matemaker --assembly=../blah.73/out_gapClosed.fa.gte200 --insertsize=10000 --out=blah73.10k
+
+
+    matemaker --assembly=../blah.87/out_gapClosed.fa.gte200 --insertsize=2000 --out=blah87.2k
+
+
+    matemaker --assembly=../blah.87/out_gapClosed.fa.gte200 --insertsize=5000 --out=blah87.5k
+
+
+    matemaker --assembly=../blah.87/out_gapClosed.fa.gte200 --insertsize=10000 --out=blah87.10k
 
 ### 7. Create a libraries.txt file that can be used by SSPACE to scaffold the best assembly with the artificial matepairs:
 
