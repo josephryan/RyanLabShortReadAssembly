@@ -20,7 +20,7 @@ MAIN: {
         next unless (length($rec->{'seq'}) >= $MIN_LEN);
         push @seqs, [$rec->{'def'},$rec->{'seq'}];
     }
-    foreach my $ra_s (sort {length($a->[1]) <=> length($b->[1])} @seqs) {
+    foreach my $ra_s (sort {length($b->[1]) <=> length($a->[1])} @seqs) {
         print "$ra_s->[0]\n$ra_s->[1]\n";
     }
 }
