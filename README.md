@@ -139,7 +139,7 @@ requires: https://github.com/nsoranzo/sspace_basic
 
     perl /usr/local/SSPACE-STANDARD-3.0_linux-x86_64/SSPACE_Standard_v3.0.pl -l libraries.txt -s ../blah.87/out_gapClosed.fa -T 20 -k 5 -a 0.7 -x 0 -b blah
 
-### 9. Remove scaffolds shorter than 200 basepairs (this is smallest accepted by GenBank) and sort by scaffold length
+### 9. Remove scaffolds shorter than 200 basepairs and sort by scaffold length
 NOTE: Found in at least one genome that a substantial number of short 200-basepair sequences include stretches of transcript sequence that are not encompassed in the main scaffolds. We're working on this.
 
 requires: remove_short_and_sort from this repo and https://github.com/josephryan/JFR-PerlModules
