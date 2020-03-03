@@ -52,20 +52,6 @@ requires: http://platanus.bio.titech.ac.jp/
 
     plat.pl --out=blah.87 --k=87 --m=500 --left=blah.A.fq --right=blah.B.fq --unp=blah.unp.fq
 
-### 4b. We are now removing contigs shorter than 200 at this stage:
-
-requires: remove_short_and_sort from this repo and https://github.com/josephryan/JFR-PerlModules
-
-    remove_short_and_sort blah.31/out_gapClosed.fa 200 > blah.31/out_gapClosed.fa.gte200
-
-    remove_short_and_sort blah.45/out_gapClosed.fa 200 > blah.45/out_gapClosed.fa.gte200
-
-    remove_short_and_sort blah.59/out_gapClosed.fa 200 > blah.59/out_gapClosed.fa.gte200
-
-    remove_short_and_sort blah.73/out_gapClosed.fa 200 > blah.73/out_gapClosed.fa.gte200
-
-    remove_short_and_sort blah.87/out_gapClosed.fa 200 > blah.87/out_gapClosed.fa.gte200
-
 ### 5. Choose best of five assemblies based on N50 and conserved orthologs. We use this tool:
 
     https://gvolante.riken.jp/analysis.html
