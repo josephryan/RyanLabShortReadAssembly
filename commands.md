@@ -1,13 +1,15 @@
 # Commands used in Steinworth_et_al_2020-CnidarianHox
 1\. Use  hmm2aln.pl to identify Hox/ParaHox and related homeodomains from translated transcriptomes and protein model files of selected cnidarian datasets.
---requires: `HMMer` (http://hmmer.org/) and `hmm2aln.pl` (https://github.com/josephryan/hmm2aln.pl )
+
+requires: `HMMer` (http://hmmer.org/) and `hmm2aln.pl` (https://github.com/josephryan/hmm2aln.pl)
 
  `./hmm2aln.pl --hmm=hd60.hmm --name=HD --fasta_dir=02-RENAMED_DATA --threads=40 --nofillcnf=nofill.hox.conf > cnid_hox_plus.fa`
 
 _Manually combined all sequences in cnid_hox_plus.fa with bilaterian and known cnidarian homeoboxes to create file, all_hox_plus.fa_
 
 2\. Generate an initial phylogenetic tree using resulting alignment from `hmm2aln.pl`
-(requires IQ-tree (ADD URL)
+
+requires IQ-tree (ADD URL)
 
 iqtree-omp -s all_hox_plus.fa -nt AUTO -bb 1000 -m LG -pre MLtree_withgaps > iq.out 2> iq.err
 
