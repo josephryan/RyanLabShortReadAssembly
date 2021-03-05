@@ -37,6 +37,7 @@ requires: https://github.com/josephryan/FastqSifter
     FastqSifter --out=PREFIX_FOR_OUTFILES --fasta=CONTAM_OR_MT_FASTA {--left=LEFT_FASTQ --right=RIGHT_FASTQ and/or --unp=UNPAIRED_FASTQ --savereads 
 
 ### 4. Assemble genome (plat.pl from this repo)
+
 requires: http://platanus.bio.titech.ac.jp/
 
 (each assembly should be performed in it's own directory)
@@ -56,46 +57,53 @@ requires: http://platanus.bio.titech.ac.jp/
 
     https://gvolante.riken.jp/analysis.html
 
-### 6. Since different regions of the genome assemble better with different k-mers, we find that there are joins that can be gleaned from sub-optimal assemblies. To make these joins we generate artificial matepairs from suboptimal assemblies using matemaker: https://github.com/josephryan/matemaker 
+### 6. Run Redundans on the best assembly
+
+requires: https://github.com/lpryszcz/redundans
+(if blah.45 was optimal assembly)
+
+    redundans.py -v -i blah.A.fq blah.B.fq -f ../blah.45/out_gapClosed.fa -o OUTPUT --threads NUMTHREADS
+
+### 7. Since different regions of the genome assemble better with different k-mers, we find that there are joins that can be gleaned from sub-optimal assemblies. To make these joins we generate artificial matepairs from suboptimal assemblies using matemaker: https://github.com/josephryan/matemaker 
 
 (if blah.45 was optimal assembly)
 
-    matemaker --assembly=../blah.31/out_gapClosed.fa.gte200 --insertsize=2000 --out=blah31.2k
+    matemaker --assembly=../blah.31/out_gapClosed.fa --insertsize=2000 --out=blah31.2k
 
 
-    matemaker --assembly=../blah.31/out_gapClosed.fa.gte200 --insertsize=5000 --out=blah31.5k
+    matemaker --assembly=../blah.31/out_gapClosed.fa --insertsize=5000 --out=blah31.5k
 
 
-    matemaker --assembly=../blah.31/out_gapClosed.fa.gte200 --insertsize=10000 --out=blah31.10k
-
-
-
-    matemaker --assembly=../blah.59/out_gapClosed.fa.gte200 --insertsize=2000 --out=blah59.2k
-
-
-    matemaker --assembly=../blah.59/out_gapClosed.fa.gte200 --insertsize=5000 --out=blah59.5k
-
-
-    matemaker --assembly=../blah.59/out_gapClosed.fa.gte200 --insertsize=10000 --out=blah59.10k
+    matemaker --assembly=../blah.31/out_gapClosed.fa --insertsize=10000 --out=blah31.10k
 
 
 
-    matemaker --assembly=../blah.73/out_gapClosed.fa.gte200 --insertsize=2000 --out=blah73.2k
+    matemaker --assembly=../blah.59/out_gapClosed.fa --insertsize=2000 --out=blah59.2k
 
 
-    matemaker --assembly=../blah.73/out_gapClosed.fa.gte200 --insertsize=5000 --out=blah73.5k
+    matemaker --assembly=../blah.59/out_gapClosed.fa --insertsize=5000 --out=blah59.5k
 
 
-    matemaker --assembly=../blah.73/out_gapClosed.fa.gte200 --insertsize=10000 --out=blah73.10k
+    matemaker --assembly=../blah.59/out_gapClosed.fa --insertsize=10000 --out=blah59.10k
 
 
-    matemaker --assembly=../blah.87/out_gapClosed.fa.gte200 --insertsize=2000 --out=blah87.2k
+
+    matemaker --assembly=../blah.73/out_gapClosed.fa --insertsize=2000 --out=blah73.2k
 
 
-    matemaker --assembly=../blah.87/out_gapClosed.fa.gte200 --insertsize=5000 --out=blah87.5k
+    matemaker --assembly=../blah.73/out_gapClosed.fa --insertsize=5000 --out=blah73.5k
 
 
-    matemaker --assembly=../blah.87/out_gapClosed.fa.gte200 --insertsize=10000 --out=blah87.10k
+    matemaker --assembly=../blah.73/out_gapClosed.fa --insertsize=10000 --out=blah73.10k
+
+
+    matemaker --assembly=../blah.87/out_gapClosed.fa --insertsize=2000 --out=blah87.2k
+
+
+    matemaker --assembly=../blah.87/out_gapClosed.fa --insertsize=5000 --out=blah87.5k
+
+
+    matemaker --assembly=../blah.87/out_gapClosed.fa --insertsize=10000 --out=blah87.10k
 
 ### 7. Create a libraries.txt file that can be used by SSPACE to scaffold the best assembly with the artificial matepairs:
 
@@ -123,10 +131,9 @@ Alternatively, you can run this command in the directory where the mate.fq files
 requires: https://github.com/nsoranzo/sspace_basic
 
 
-    perl /usr/local/SSPACE-STANDARD-3.0_linux-x86_64/SSPACE_Standard_v3.0.pl -l libraries.txt -s ../blah.87/out_gapClosed.fa -T 20 -k 5 -a 0.7 -x 0 -b blah
+    perl /usr/local/SSPACE-STANDARD-3.0_linux-x86_64/SSPACE_Standard_v3.0.pl -l libraries.txt -s ../blah.redundans/OUTPUT/scaffolds.reduced.fa -T 20 -k 5 -a 0.7 -x 0 -b blah
 
-### 9. Remove scaffolds shorter than 200 basepairs and sort by scaffold length
-NOTE: Found in at least one genome that a substantial number of short 200-basepair sequences include stretches of transcript sequence that are not encompassed in the main scaffolds. We're working on this.
+### 9. Sort by scaffold length (NOTE: the script below removes sequences shorter than 200, but redundans already does this)
 
 requires: remove_short_and_sort from this repo and https://github.com/josephryan/JFR-PerlModules
 
