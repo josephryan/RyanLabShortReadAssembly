@@ -30,7 +30,7 @@ requires:http://software.broadinstitute.org/allpaths-lg/blog/
     gzip -9 *.fq
     perl /usr/local/allpathslg-44837/src/ErrorCorrectReads.pl PAIRED_READS_A_IN=OUT.trim.R1.fq.gz PAIRED_READS_B_IN=OUT.trim.R2.fq.gz UNPAIRED_READS_IN=OUT.trim.unp.concat.fq.gz PAIRED_SEP=100 THREADS=160 PHRED_ENCODING=33 READS_OUT=Boltenia > ecr.out 2> ecr.err &
 
-### 3. remove mt reads (usually run a preliminary platanus assembly—see plat.45 below—to identify/assemble the MT genome)
+### 3. Remove mitochondrial (MT) reads (usually run a preliminary platanus assembly—see plat.45 below—to identify/assemble the MT genome)
 
 requires: https://github.com/josephryan/FastqSifter 
 
@@ -57,7 +57,7 @@ requires: http://platanus.bio.titech.ac.jp/
 
     https://gvolante.riken.jp/analysis.html
 
-### 6. Run Redundans on the best assembly
+### 6. Run Redundans on the best assembly to selectively remove alternative heterozygous contigs
 
 requires: https://github.com/lpryszcz/redundans
 (if blah.45 was optimal assembly)
