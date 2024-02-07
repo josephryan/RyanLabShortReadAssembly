@@ -24,7 +24,7 @@ requires:http://www.usadellab.org/cms/?page=trimmomatic
 
 ### 2. error correction
 
-requires:http://software.broadinstitute.org/allpaths-lg/blog/
+requires:ftp://ftp.broadinstitute.org/pub/crd/ALLPATHS/Release-LG/latest_source_code/LATEST_VERSION.tar.gz
 
     cat OUT.trim.unp1.fq OUT.trim.unp2.fq > OUT.trim.unp.concat.fq
     gzip -9 *.fq
